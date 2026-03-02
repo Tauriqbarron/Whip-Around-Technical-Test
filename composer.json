@@ -1,0 +1,11 @@
+{
+    "name": "whip-around/fleet-api",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tauriqbarron",
+            "email": "tauriqbarron@hotmail.co.nz"
+        }
+    ],
+    "require": {}
+}
