@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Car } from "../types";
+import { createCar } from "../api/api";
 
 /**
  * =================================================================
@@ -81,9 +82,6 @@ export interface CarFormProps {
   onCarCreated: (car: Car) => void;
 }
 
-
-
-
 export default function CarForm({ onCarCreated }: CarFormProps) {
     const [name, setName] = useState("");
     const [make, setMake] = useState("");
@@ -99,30 +97,24 @@ export default function CarForm({ onCarCreated }: CarFormProps) {
         setErrors([]);
         setLoading(true);
         try {
-            const response = await fetch("/cars", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ name, make, model, year: parseInt(year) }),
+            const createdCar = await createCar({
+                name,
+                make,
+                model,
+                year: parseInt(year),
             });
-            if (!response.ok) {
-                const errorData = await response.json();
-                if (errorData.details) {
-                    setErrors(errorData.details);
-                } else if (errorData.error) {
-                    setErrors([errorData.error]);
-                }
-            } else {
-                const createdCar = await response.json();
-                onCarCreated(createdCar);
-                setName("");
-                setMake("");
-                setModel("");
-                setYear("");
+            onCarCreated(createdCar);
+            setName("");
+            setMake("");
+            setModel("");
+            setYear("");
+        } catch (error: unknown) {
+            const err = error as { details?: string[]; error?: string };
+            if (err.details) {
+                setErrors(err.details);
+            } else if (err.error) {
+                setErrors([err.error]);
             }
-        } catch (error) {
-            console.error("Error creating car:", error);
         } finally {
             setLoading(false);
         }
