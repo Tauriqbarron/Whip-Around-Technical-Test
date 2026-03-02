@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type SubmitEvent } from "react";
 import type { Car, Inspection } from "../types";
 import { createInspection } from "../api/api";
 
@@ -42,7 +42,7 @@ import { createInspection } from "../api/api";
  *   - Headlights:  <input type="checkbox">
  *
  * =================================================================
- * FUNCTION: handleSubmit(e: FormEvent)
+ * FUNCTION: handleSubmit(e: SubmitEvent<HTMLFormElement>)
  * =================================================================
  * Called on form submission.
  *
@@ -102,7 +102,7 @@ export default function InspectionForm({ cars, onInspectionCreated }: Inspection
     const labelStyle = "block text-sm font-medium text-gray-700 mb-1";
     const inputStyle = "form-checkbox h-5 w-5 text-blue-600";
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         setErrors([]);
         setLoading(true);

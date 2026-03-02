@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type SubmitEvent } from "react";
 import type { Car } from "../types";
 import { createCar } from "../api/api";
 
@@ -92,7 +92,7 @@ export default function CarForm({ onCarCreated }: CarFormProps) {
 
     const inputStyle = "w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500";
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         setErrors([]);
         setLoading(true);
