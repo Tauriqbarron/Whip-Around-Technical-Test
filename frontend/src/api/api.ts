@@ -4,6 +4,10 @@ const API_BASE = "http://localhost:8000";
 
 export async function getCars(): Promise<Car[]> { 
     const res = await fetch(`${API_BASE}/cars`);
+    if (!res.ok) {
+        const errorBody = await res.json();
+        throw errorBody;
+    }
     return res.json();
 }
 
@@ -22,6 +26,10 @@ export async function createCar(data: CarFormData): Promise<Car> {
 
 export async function getInspections(): Promise<Inspection[]> { 
     const res = await fetch(`${API_BASE}/inspections`);
+    if (!res.ok) {
+        const errorBody = await res.json();
+        throw errorBody;
+    }
     return res.json();
 }
 

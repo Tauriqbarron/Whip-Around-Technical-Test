@@ -1,10 +1,10 @@
 <?php
 
-Require_once __DIR__ . '/../src/Models/Database.php';
-Require_once __DIR__ . '/../src/Controllers/CarController.php';
-Require_once __DIR__ . '/../src/Controllers/InspectionController.php';
-Require_once __DIR__ . '/../src/Validators/CarValidator.php';
-Require_once __DIR__ . '/../src/Validators/InspectionValidator.php';
+require_once __DIR__ . '/../src/Models/Database.php';
+require_once __DIR__ . '/../src/Controllers/CarController.php';
+require_once __DIR__ . '/../src/Controllers/InspectionController.php';
+require_once __DIR__ . '/../src/Validators/CarValidator.php';
+require_once __DIR__ . '/../src/Validators/InspectionValidator.php';
 
 function setHeaders(): void {
     header('Content-Type: application/json');
