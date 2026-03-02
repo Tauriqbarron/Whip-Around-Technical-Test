@@ -78,7 +78,7 @@ import { createCar } from "../api/api";
  *
  * =================================================================
  */
-export interface CarFormProps {
+interface CarFormProps {
   onCarCreated: (car: Car) => void;
 }
 
