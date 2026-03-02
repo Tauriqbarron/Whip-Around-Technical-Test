@@ -3,3 +3,4 @@ vendor/
 dist/
 .env
 database/*.db
+.phpunit.result.cache

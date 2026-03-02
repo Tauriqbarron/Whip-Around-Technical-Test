@@ -15,9 +15,8 @@ export default function InspectionForm({ cars, onInspectionCreated }: Inspection
     const [errors, setErrors] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const selectStyle = "w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500";
-    const spanStyle = "text-sm text-gray-700";
     const labelStyle = "block text-sm font-medium text-gray-700 mb-1";
-    const inputStyle = "form-checkbox h-5 w-5 text-blue-600";
+    const checkboxLabelStyle = "flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer";
 
     const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -81,32 +80,29 @@ export default function InspectionForm({ cars, onInspectionCreated }: Inspection
                     </div>
                     {/* Checkboxes */}
                     <div className="mb-4 flex gap-6">
-                        <label className={labelStyle}>
+                        <label className={checkboxLabelStyle}>
                             <input
                                 type="checkbox"
                                 checked={wipers}
                                 onChange={(e) => setWipers(e.target.checked)}
-                                className={inputStyle}
                             />
-                            <span className={spanStyle}>Wipers</span>
+                            Wipers
                         </label>
-                        <label className={labelStyle}>
+                        <label className={checkboxLabelStyle}>
                             <input
                                 type="checkbox"
                                 checked={engineSound}
                                 onChange={(e) => setEngineSound(e.target.checked)}
-                                className={inputStyle}
                             />
-                            <span className={spanStyle}>Engine Sound</span>
+                            Engine Sound
                         </label>
-                        <label className={labelStyle}>
+                        <label className={checkboxLabelStyle}>
                             <input
                                 type="checkbox"
                                 checked={headlights}
                                 onChange={(e) => setHeadlights(e.target.checked)}
-                                className={inputStyle}
                             />
-                            <span className={spanStyle}>Headlights</span>
+                            Headlights
                         </label>
                     </div>
                     {/* Submit button */}
