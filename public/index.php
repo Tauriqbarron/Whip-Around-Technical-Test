@@ -91,37 +91,17 @@ function handlePreflight(): void {
  * =================================================================
  */
 function route(PDO $pdo, string $method, string $uri): void {
-
+    $availableUris = ['/cars', '/inspections'];
     
     match("$method $uri") {
         'GET /cars' => CarController::getAll($pdo),
         'POST /cars' => CarController::create($pdo),
         'GET /inspections' => InspectionController::getAll($pdo),
         'POST /inspections' => InspectionController::create($pdo),
-        default => handleNoMatch(404, "Not found.")
+        default => in_array($uri, $availableUris) 
+            ? jsonError(405, "Method $method not allowed for $uri.") 
+            : jsonError(404, "Endpoint $uri not found.")
     };
-}
-
-/**
- * =================================================================
- * FUNCTION: handleNoMatch(int $code, string $message)
- * =================================================================
- * Handles unmatched routes or methods by returning appropriate JSON errors.
- *
- * - If message starts with "Not found", return 404
- * - If message starts with "Method not allowed", return 405
- * - Otherwise, return 400 Bad Request
- *
- * =================================================================
- */
-function handleNoMatch(int $code, string $message): void {
-    if (str_starts_with($message, "Not found")) {
-        jsonError(404, $message);
-    } elseif (str_starts_with($message, "Method not allowed")) {
-        jsonError(405, $message);
-    } else {
-        jsonError(400, $message);
-    }
 }
 
 /**
