@@ -1,35 +1,3 @@
-/**
- * =================================================================
- * CAR LIST — components/CarList.tsx
- * =================================================================
- *
- * Displays all cars in a table.
- *
- * =================================================================
- * PROPS: CarListProps
- * =================================================================
- *   cars: Car[]   — array of cars passed from the parent
- *
- * =================================================================
- * COMPONENT: CarList({ cars }: CarListProps)
- * =================================================================
- * Renders a table with columns: ID, Name, Make, Model, Year.
- *
- * - If cars array is empty, show a message: "No cars found."
- * - Otherwise, render a <table> with:
- *   - <thead> row: ID | Name | Make | Model | Year
- *   - <tbody> mapping over cars, one row per car
- *   - Use car.id as the React key
- *
- * Tailwind styling:
- *   - Table: w-full, border-collapse
- *   - Header cells: bg-gray-100, text-left, p-3, font-semibold
- *   - Body cells: p-3, border-b border-gray-200
- *   - Hover on rows: hover:bg-gray-50
- *
- * =================================================================
- */
-
 import type { Car } from '../types';
 
 interface CarListProps {

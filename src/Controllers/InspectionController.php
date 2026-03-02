@@ -1,13 +1,5 @@
 <?php
 
-/**
- * =================================================================
- * INSPECTION CONTROLLER — src/Controllers/InspectionController.php
- * =================================================================
- *
- * Class: InspectionController
- * Handles business logic for inspection-related API endpoints.
- */
 class InspectionController {
     public static function getAll(PDO $pdo): void {
         $stmt = $pdo->query('SELECT * FROM inspections ORDER BY id DESC');
